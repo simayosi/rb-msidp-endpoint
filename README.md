@@ -1,5 +1,9 @@
 # MSIDP::Endpoint
 
+[![Gem Version](https://badge.fury.io/rb/msidp-endpoint.svg)](https://badge.fury.io/rb/msidp-endpoint)
+![Ruby](https://github.com/simayosi/rb-msidp-endpoint/actions/workflows/test.yml/badge.svg)
+
+
 A simple library for authentication endpoints of Microsoft identity platform.
 
 
@@ -73,6 +77,10 @@ if token.valid? in: 3
   # Request to a resource with the auth_header.
 end
 ```
+
+
+## API Reference
+[RubyDoc.info](https://rubydoc.info/gems/msidp-endpoint)
 
 
 ## License
