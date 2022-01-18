@@ -1,0 +1,15 @@
+module Msidp
+  module Endpoint
+    def authorize_uri: (String tenant) -> URI::Generic
+    def token_uri: (String tenant) -> URI::Generic
+    def uri: (String tenant, String endpoint) -> URI::Generic
+    def authorize: (URI::Generic uri, Hash[untyped, untyped] params) -> Net::HTTPResponse
+    def token: (URI::Generic uri, Hash[untyped, untyped] params, ?Hash[untyped, untyped] supplement) -> AccessToken
+    def get: (URI::Generic uri, Hash[untyped, untyped] params, ?Hash[String, untyped] headers) -> Net::HTTPResponse
+    def post: (URI::Generic uri, Hash[untyped, untyped] params, ?Hash[String, untyped] headers) -> Net::HTTPResponse
+    def validate_json_response: (Net::HTTPResponse res) -> Net::HTTPResponse
+
+    private
+    def https_request: (URI::Generic uri, Net::HTTPRequest req) -> Net::HTTPResponse
+  end
+end

@@ -1,0 +1,9 @@
+module Msidp
+  class Error < StandardError
+    attr_reader response: Net::HTTPResponse
+    attr_reader body: String | Hash[Symbol, untyped]
+    attr_reader error: String?
+    attr_reader description: String?
+    def initialize: (Net::HTTPResponse response) -> void
+  end
+end

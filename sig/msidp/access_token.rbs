@@ -1,0 +1,14 @@
+module Msidp
+  class AccessToken
+    attr_reader value: String
+    attr_reader expire: Time
+    attr_reader scope: Array[String]
+    attr_reader refresh_token: String?
+    attr_reader id_token: String?
+    attr_reader type: String
+    def initialize: (String value, Time expire, Array[String] scope, ?String refresh_token, ?String id_token, ?String `type`) -> void
+    def self.parse: (String | Net::HTTPResponse res, ?Hash[untyped, untyped] supplement) -> AccessToken
+    def valid?: (?in: Integer) -> bool
+    def to_s: -> String
+  end
+end
