@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'msidp/certificate_credential'
+
+if ARGV.length < 4
+  progname = File.basename($PROGRAM_NAME)
+  warn <<~USAGE
+    Compute a client assetion for a certificate pair.
+    Usage:
+      #{progname} certificate_file private_key_file tenant_id client_id
+        certificate_file: public certificate file
+        private_key_file: private key file
+        tenant_id: tenant ID in GUID or domain-name format
+        client_id: applicaiton (client) ID
+  USAGE
+  exit 64
+end
+
+certificate, private_key, tenant_id, client_id = ARGV
+
+cert = OpenSSL::X509::Certificate.new(File.binread(certificate))
+key = OpenSSL::PKey::RSA.new(File.binread(private_key))
+
+cred = MSIDP::CertificateCredential.new(
+  cert, key, tenant_id: tenant_id, client_id: client_id
+)
+
+puts cred.assertion

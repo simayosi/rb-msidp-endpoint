@@ -21,5 +21,7 @@ Gem::Specification.new do |spec|
     'https://rubydoc.info/gems/msidp-endpoint'
 
   spec.files = Dir['lib/**/*', 'sig/**/*', 'LICENSE.txt', 'README.md']
+  spec.bindir = 'exe'
+  spec.executables = %w[msidp-cert2assertion]
   spec.require_paths = ['lib']
 end
